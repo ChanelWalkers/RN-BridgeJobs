@@ -1,20 +1,43 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import AccountScreen from './screens/AccountScreen';
+import ToolsScreen from './screens/ToolScreen';
+import { View, Text } from 'react-native';
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={{
+          tabBarActiveTintColor: '#ff5a00',
+          tabBarInactiveTintColor: '#888',
+          tabBarStyle: { paddingBottom: 5, height: 60 },
+        }}
+      >
+        <Tab.Screen
+          name="Profile"
+          component={AccountScreen}
+          options={{
+            tabBarLabel: 'Tài khoản',
+            tabBarIcon: ({ color, size }) => (
+              <Text style={{ color: color, fontSize: size }}>👤</Text>
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Tools"
+          component={ToolsScreen}
+          options={{
+            tabBarLabel: 'Công cụ',
+            tabBarIcon: ({ color, size }) => (
+              <Text style={{ color: color, fontSize: size }}>🛠️</Text>
+            ),
+          }}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
