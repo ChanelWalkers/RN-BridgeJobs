@@ -1,25 +1,35 @@
 import React, { useState } from 'react';
 import { View, Text, Pressable, Switch, StyleSheet, ScrollView } from 'react-native';
+import Colors from '../constants/Colors';
 
 export default function AccountScreen({ navigation }) {
   const [isJobSearchEnabled, setJobSearchEnabled] = useState(false);
   const [isAutoApplyEnabled, setAutoApplyEnabled] = useState(false);
 
+  function moveToLogin() {
+    navigation.navigate('Login');
+  }
+
+  function moveToSignUp() {
+    navigation.navigate('SignUp');
+  }
+
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Trang cá nhân</Text>
-        <Pressable style={styles.notificationIcon} />
-      </View>
 
       <ScrollView contentContainerStyle={styles.content}>
-        {}
+        { }
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Về tôi</Text>
           <Text style={styles.welcomeText}>Chào mừng bạn tới </Text>
-          <Pressable>
-            <Text style={styles.loginText}>ĐĂNG KÝ / ĐĂNG NHẬP</Text>
-          </Pressable>
+          <View style={styles.navigationContainer}>
+            <Pressable onPress={moveToSignUp}>
+              <Text style={styles.loginText}>ĐĂNG KÝ/</Text>
+            </Pressable>
+            <Pressable onPress={moveToLogin}>
+              <Text style={styles.loginText}>ĐĂNG NHẬP</Text>
+            </Pressable>
+          </View>
 
           <View style={styles.switchContainer}>
             <Text style={styles.switchLabel}>Tìm kiếm công việc</Text>
@@ -40,7 +50,7 @@ export default function AccountScreen({ navigation }) {
           </Text>
         </View>
 
-        {}
+        { }
         <Pressable onPress={() => navigation.navigate('Tools')} style={styles.button}>
           <Text style={styles.buttonText}>Chuyển đến Công cụ</Text>
         </Pressable>
@@ -52,7 +62,7 @@ export default function AccountScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#fff' },
   header: {
-    backgroundColor: '#ff5a00',
+    backgroundColor: Colors.button,
     paddingVertical: 15,
     alignItems: 'center',
     flexDirection: 'row',
@@ -63,7 +73,7 @@ const styles = StyleSheet.create({
   notificationIcon: { width: 24, height: 24, backgroundColor: '#fff', borderRadius: 12 },
   content: { padding: 20 },
   section: {
-    backgroundColor: '#f5f5f5',
+    backgroundColor: Colors.titleButton,
     padding: 15,
     marginBottom: 15,
     borderRadius: 8,
@@ -81,7 +91,7 @@ const styles = StyleSheet.create({
   noteText: { fontSize: 14, color: '#555', marginVertical: 5 },
   sectionDescription: { fontSize: 14, color: '#555', marginBottom: 10 },
   button: {
-    backgroundColor: '#ff5a00',
+    backgroundColor: Colors.button,
     paddingVertical: 10,
     borderRadius: 5,
     alignItems: 'center',
@@ -96,4 +106,8 @@ const styles = StyleSheet.create({
   },
   navItem: { fontSize: 14, color: '#888' },
   activeNavItem: { color: '#ff5a00' },
+  navigationContainer:{
+    flexDirection:'row',
+  }
 });
+

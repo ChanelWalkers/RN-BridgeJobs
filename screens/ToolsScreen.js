@@ -1,12 +1,10 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import Colors from '../constants/Colors';
 
 export default function ToolsScreen() {
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Tools</Text>
-      </View>
 
       <ScrollView contentContainerStyle={styles.content}>
 
@@ -52,7 +50,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     alignItems: 'center',
   },
-  headerText: { color: '#fff', fontSize: 20, fontWeight: 'bold' },
+  headerText: { color: Colors.titleButton, fontSize: 20, fontWeight: 'bold' },
   content: { padding: 20 },
   section: {
     backgroundColor: '#f5f5f5',
@@ -63,12 +61,12 @@ const styles = StyleSheet.create({
   sectionTitle: { fontSize: 18, fontWeight: 'bold', marginBottom: 5 },
   sectionDescription: { fontSize: 14, color: '#555', marginBottom: 10 },
   button: {
-    backgroundColor: '#ff5a00',
+    backgroundColor: Colors.button,
     paddingVertical: 10,
     borderRadius: 5,
     alignItems: 'center',
   },
-  buttonText: { color: '#fff', fontSize: 16, fontWeight: 'bold' },
+  buttonText: { color: Colors.titleButton, fontSize: 16, fontWeight: 'bold' },
   bottomNav: {
     flexDirection: 'row',
     justifyContent: 'space-around',
