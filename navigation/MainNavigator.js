@@ -9,7 +9,13 @@ const Stack = createNativeStackNavigator();
 function MainNavigator() {
     return (
         <Stack.Navigator screenOptions={{
-            headerTintColor: Colors.button,
+            headerStyle:{
+                backgroundColor: Colors.button,
+            },
+            headerTitleAlign: "center",
+            headerTitleStyle:{
+                color: Colors.txtField
+            }
         }}>
             <Stack.Screen
                 name='Drawer'
