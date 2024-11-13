@@ -2,7 +2,10 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import Colors from '../constants/Colors';
 
-export default function ToolsScreen() {
+export default function ToolsScreen({navigation}) {
+  function cvHandlePress(){
+    navigation.navigate('CV');
+  }
   return (
     <View style={styles.container}>
 
@@ -13,7 +16,7 @@ export default function ToolsScreen() {
           <Text style={styles.sectionDescription}>
             Would you like you to have a job that suits you. Create cv on , we will suggest you the most suitable jobs
           </Text>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={cvHandlePress}>
             <Text style={styles.buttonText}>UPLOAD/CREATE NEW CV +</Text>
           </TouchableOpacity>
         </View>

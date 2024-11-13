@@ -1,4 +1,5 @@
 import Colors from "../constants/Colors";
+import ExportCVScreen from "../screens/ExportCVScreen";
 import LoginScreen from "../screens/LoginScreen";
 import SignUpScreen from "../screens/SignUpScreen";
 import DrawerNavigator from "./DrawerNavigator";
@@ -26,6 +27,11 @@ function MainNavigator() {
             />
             <Stack.Screen name='SignUp' component={SignUpScreen} />
             <Stack.Screen name='Login' component={LoginScreen} />
+            <Stack.Screen name="CV" component={ExportCVScreen} 
+                options={{
+                    headerTitle: 'Update or Create Your CV'
+                }}
+            />
         </Stack.Navigator>
     )
 }
