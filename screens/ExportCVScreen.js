@@ -30,18 +30,17 @@ function ExportCVScreen() {
 
   const handleDeleteProject = (index) => {
     Alert.alert(
-      'Xác nhận',
-      'Bạn có chắc chắn muốn xóa dự án này?',
+      'Confirm',
+      'Do you wanna delete this Project',
       [
-        { text: 'Hủy', style: 'cancel' },
+        { text: 'Cancel', style: 'cancel' },
         {
-          text: 'Xóa',
+          text: 'Delete',
           style: 'destructive',
           onPress: () => {
-            // Tạo bản sao của danh sách dự án và xóa dự án tại chỉ số 'index'
             const updatedProjects = projects.filter((_, i) => i !== index);
             setProjects(updatedProjects);
-            Alert.alert('Thành công', 'Dự án đã được xóa');
+            Alert.alert('Success', 'Project has been deleted');
           }
         }
       ]);
@@ -219,67 +218,54 @@ function ExportCVScreen() {
 </html>
       `;
 
-      // Render HTML thành PDF
       const { uri } = await Print.printToFileAsync({ html });
 
-      // Lưu file PDF vào bộ nhớ thiết bị (thư mục nội bộ)
       const fileUri = FileSystem.documentDirectory + `CV_${name}.pdf`;
       await FileSystem.copyAsync({ from: uri, to: fileUri });
 
-      Alert.alert('Tệp PDF đã được tạo và lưu thành công!', `Tệp lưu tại: ${fileUri}`);
+      Alert.alert('PDF file has been created and saved successfully', `Saved at: ${fileUri}`);
 
-      console.log("Tệp PDF lưu tại:", fileUri);
 
-      // Tiếp theo, bạn có thể sao chép tệp vào thư mục công khai (Downloads)
       await copyToDownloads(fileUri);
 
     } catch (error) {
-      Alert.alert('Lỗi', 'Đã có lỗi xảy ra khi tạo tệp PDF');
+      Alert.alert('Error', 'An error occured while creating PDF file!');
       console.error(error);
     }
   };
 
-  // Hàm sao chép tệp vào thư mục Downloads
   const copyToDownloads = async (sourceUri) => {
     try {
       const destinationUri = FileSystem.documentDirectory + `Downloads/CV_${name}.pdf`;
 
-      // Kiểm tra nếu tệp tồn tại
       const fileInfo = await FileSystem.getInfoAsync(sourceUri);
       if (!fileInfo.exists) {
         Alert.alert('Lỗi', 'Tệp PDF không tồn tại!');
         return;
       }
 
-      // Sao chép tệp từ thư mục nội bộ vào thư mục Downloads
       await FileSystem.copyAsync({ from: sourceUri, to: destinationUri });
-      Alert.alert('Tệp đã được sao chép vào thư mục Downloads');
-      console.log('Tệp đã được sao chép vào thư mục Downloads:', destinationUri);
+      Alert.alert('PDF file has been copied in Downloads Folder');
 
-      // Sau khi sao chép, bạn có thể chia sẻ hoặc mở tệp PDF
       await sharePDF(destinationUri);
 
     } catch (error) {
-      Alert.alert('Lỗi', 'Đã có lỗi xảy ra khi sao chép tệp');
+      Alert.alert('Error', 'Has Error occured while copying PDF file');
       console.error(error);
     }
   };
 
-  // Hàm chia sẻ tệp PDF
   const sharePDF = async (fileUri) => {
     try {
       const fileInfo = await FileSystem.getInfoAsync(fileUri);
       if (!fileInfo.exists) {
-        Alert.alert('Lỗi', 'Tệp PDF không tồn tại!');
+        Alert.alert('Error', 'PDF file does not exist');
         return;
       }
 
-      // Chia sẻ tệp PDF
       await Sharing.shareAsync(fileUri);
-      console.log('Đã chia sẻ tệp PDF:', fileUri);
     } catch (error) {
-      Alert.alert('Lỗi', 'Đã có lỗi xảy ra khi chia sẻ tệp');
-      console.error(error);
+      Alert.alert('Error', 'Has Error occured when sharing PDF file');
     }
   };
 
