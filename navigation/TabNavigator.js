@@ -3,6 +3,7 @@ import { Entypo, SimpleLineIcons } from "@expo/vector-icons";
 import { Text } from "react-native";
 import AccountScreen from "../screens/AccountScreen";
 import ToolsScreen from "../screens/ToolsScreen";
+import JobDetailScreen from "../screens/JobDetailScreen";
 import Colors from "../constants/Colors";
 
 const Tab = createBottomTabNavigator();
@@ -32,6 +33,17 @@ function TabNavigator() {
                 component={ToolsScreen}
                 options={{
                     tabBarLabel: 'Tools',
+                    tabBarIcon: ({ color, size }) => (
+                        <Entypo size={size} color={color} name="tools" />
+                    ),
+                    headerShown: false,
+                }}
+            />
+            <Tab.Screen
+                name="JobDetail"
+                component={JobDetailScreen}
+                options={{
+                    tabBarLabel: 'JobDetail',
                     tabBarIcon: ({ color, size }) => (
                         <Entypo size={size} color={color} name="tools" />
                     ),
