@@ -142,10 +142,11 @@ function ExportCVScreen() {
       <div class="content">${education}</div>
     </div>
 
+    ${workExp ? `
     <div class="section">
       <div class="section-title">Work Experience</div>
       <div class="content">${workExp}</div>
-    </div>
+    </div> `: ''}
 
     ${activity ? `
     <div class="section">
@@ -167,7 +168,7 @@ function ExportCVScreen() {
 
     <div class="section">
       <div class="section-title">Skills</div>
-      <div class="content">-</div>
+      <div class="content">${skills}</div>
     </div>
 
 
@@ -186,15 +187,16 @@ function ExportCVScreen() {
             <td>${index + 1}</td>
             <td>
             ${project.customerName ? `
-              <strong>Name of customer: ${project.customerName} </strong> <br> ` : '' }
+              <strong>Name of customer: ${project.customerName} </strong> <br> ` : ''}
               <strong>Project Name: ${project.projectName}</strong> <br>
-              <strong>Description project:</strong> <br>
-              <strong>Your team size:</strong> <br>
+              <strong>Description project: ${project.projectDescription}</strong> <br>
+              <strong>Your team size: ${project.teamSize}</strong> <br>
             ${project.position ? `
             <strong>Your position in project: ${project.position}</strong> <br> ` : ''
-            }
-              <strong>Your responsibility in project:</strong> <br>
-              <strong>Technology description:</strong>
+        }
+              <strong>Your responsibility in project: ${project.responsibillity}
+              </strong> <br>
+              <strong>Technology description: ${project.techDescription}</strong>
             </td>
           </tr>
           `).join('')}
@@ -442,13 +444,13 @@ const styles = StyleSheet.create({
     textAlign: 'justify',
     color: Colors.txt,
   },
-  buttonProjectContainer:{
+  buttonProjectContainer: {
     flexDirection: 'row',
     flex: 1,
     padding: 5,
   },
-  buttonProject:{
-    width:'40%',
+  buttonProject: {
+    width: '40%',
     paddingHorizontal: 5,
     marginHorizontal: 8,
     marginHorizontal: 10,
