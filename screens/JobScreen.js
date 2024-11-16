@@ -6,7 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 import { db, collection, getDocs } from '../model/firebase'; // Import Firestore config
 
-const JobScreen = () => {
+const JobScreen = ({navigation}) => {
   const [JobInfor, setJobInfor] = useState([]); // State để lưu trữ dữ liệu từ Firestore
 
   // Lấy dữ liệu từ Firestore collection "business_infor"
@@ -27,6 +27,10 @@ const JobScreen = () => {
   }, []);
 
   // Lấy dữ liệu từ API Job
+  function handlePress(item) {
+    navigation.navigate("JobDetail", { jobData: item }); // Truyền dữ liệu sang JobDetailScreen
+  }
+  
   
 
   return (
@@ -44,7 +48,7 @@ const JobScreen = () => {
       )}
       renderItem={({ item }) => (
         <View>
-          <TouchableOpacity style={styles.jobContainer}>
+          <TouchableOpacity style={styles.jobContainer} onPress={() => handlePress(item) }>
             <View style={styles.row}>
               <Image 
                 source={{ uri: item.Image|| 'https://via.placeholder.com/50' }} 

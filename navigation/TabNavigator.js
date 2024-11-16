@@ -66,17 +66,7 @@ function TabNavigator() {
                     headerShown: false,
                 }}
             />
-            <Tab.Screen
-                name="JobDetail"
-                component={JobDetailScreen}
-                options={{
-                    tabBarLabel: 'JobDetail',
-                    tabBarIcon: ({ color, size }) => (
-                        <Entypo size={size} color={color} name="tools" />
-                    ),
-                    headerShown: false,
-                }}
-            />
+
         </Tab.Navigator>
     );
 }

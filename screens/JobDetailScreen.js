@@ -3,8 +3,11 @@ import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image } from 'rea
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '../constants/Colors';
 import { FlatList } from 'react-native';
-
+import { useRoute } from '@react-navigation/native';
 export default function JobDetailScreen() {
+  const route = useRoute();
+  const { jobData } = route.params;
+  
     const suggestedJobs = [
         { id: '1', title: 'Trung Tâm Đổi Mới Sáng Tạo', company: 'Tổng Công ty Bưu điện Việt Nam', location: 'Quận Nam Từ Liêm, Hà Nội', salary: '15.000 $ to 40.000 $', tags: ['Machine Learning', 'AI', 'PyTorch'], time: '5 hours ago' },
         { id: '2', title: 'Chuyên Viên Kinh Doanh', company: 'Viettel Post', location: 'Quận Cầu Giấy, Hà Nội', salary: '15.000 $ to 40.000 $', tags: ['Sales', 'Business'], time: '1 day ago' },
@@ -16,18 +19,18 @@ export default function JobDetailScreen() {
         {/* Job Image */}
         <View style={styles.jobImageContainer}>
           <Image
-            source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxUS1iz_zXk2ph06jC2_TK-oSFHf3HyYgoWg&s' }} // Thay bằng URL hình ảnh công ty
+            source={{ uri: jobData?.Image||'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxUS1iz_zXk2ph06jC2_TK-oSFHf3HyYgoWg&s' }} // Thay bằng URL hình ảnh công ty
             style={styles.companyLogo}
           />
         </View>
 
         {/* Job Info */}
         <View style={styles.jobInfoContainer}>
-          <Text style={styles.jobTitle}>[DI6] Senior Tester (Automation/Manual) – MSB - 1Y561</Text>
-          <Text style={styles.companyName}>Ngân hàng TMCP Hàng Hải Việt Nam (MSB)</Text>
+          <Text style={styles.jobTitle}>{jobData?.name}</Text>
+          <Text style={styles.companyName}>{jobData?.Title}</Text>
 
           <View style={styles.tagContainer}>
-            {['Tester', 'Database', 'Automation Tester', 'Manual Test', 'Mobile Tester'].map((tag, index) => (
+            {jobData.TechStack?.map((tag, index) => (
               <View key={index} style={styles.tag}>
                 <Text style={styles.tagText}>{tag}</Text>
               </View>
@@ -41,16 +44,16 @@ export default function JobDetailScreen() {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Thông tin</Text>
           <Text style={styles.sectionDescription}>
-            <Ionicons name="location-sharp" size={16} color="#555" /> TNR Tower, Số 54A Nguyễn Chí Thanh, Đống Đa, Hà Nội
+            <Ionicons name="location-sharp" size={16} color="#555" /> {jobData?.Address}
           </Text>
           <Text style={styles.sectionDescription}>
-            <Ionicons name="briefcase" size={16} color="#555" /> In Office
+            <Ionicons name="briefcase" size={16} color="#555" /> {jobData?.Type}
           </Text>
           <Text style={styles.sectionDescription}>
             <Ionicons name="cash-outline" size={16} color="#555" /> Up to 2.000 USD
           </Text>
           <Text style={styles.sectionDescription}>
-            <Ionicons name="time-outline" size={16} color="#555" /> 3 năm
+            <Ionicons name="time-outline" size={16} color="#555" /> {jobData?.Experince}
           </Text>
         </View>
 
@@ -58,16 +61,13 @@ export default function JobDetailScreen() {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Yêu cầu công việc</Text>
           <Text style={styles.sectionDescription}>
-            - Kinh nghiệm làm việc từ 1-2 năm trong lĩnh vực kiểm thử phần mềm.
+              {jobData?.responsibilities.replace(/;/g, '\n')}
           </Text>
+        </View>
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Phúc lợi</Text>
           <Text style={styles.sectionDescription}>
-            - Có kỹ năng sử dụng các công cụ kiểm thử như Selenium, JIRA, hoặc tương tự.
-          </Text>
-          <Text style={styles.sectionDescription}>
-            - Kỹ năng giao tiếp tốt và khả năng làm việc nhóm.
-          </Text>
-          <Text style={styles.sectionDescription}>
-            - Có hiểu biết về quy trình kiểm thử tự động là một lợi thế.
+              {jobData?.benefits.replace(/;/g, '\n')}
           </Text>
         </View>
 
@@ -115,7 +115,10 @@ const styles = StyleSheet.create({
     container: { flex: 1, backgroundColor: '#fff' },
     content: { padding: 20 },
     jobImageContainer: { alignItems: 'center', marginBottom: 20 },
-    companyLogo: { width: 80, height: 80, borderRadius: 10 },
+    companyLogo: {  width: 70,
+      height: 70,
+      resizeMode: 'contain',
+      marginRight: 10},
     jobInfoContainer: { backgroundColor: '#f5f5f5', padding: 15, borderRadius: 10, marginBottom: 15 },
     jobTitle: { fontSize: 18, fontWeight: 'bold', marginBottom: 5 },
     companyName: { fontSize: 16, color: '#666', marginBottom: 10 },
