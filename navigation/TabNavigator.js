@@ -7,6 +7,9 @@ import HomeScreen from "../screens/HomeScreen";
 import JobDetailScreen from "../screens/JobDetailScreen";
 import Colors from "../constants/Colors";
 import { FontAwesome5 } from "@expo/vector-icons";
+import JobScreen from "../screens/JobScreen";
+import CompanyScreen from "../screens/CompanyScreen";
+import { Ionicons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 
@@ -20,8 +23,19 @@ function TabNavigator() {
             }}
         >
             <Tab.Screen
-                name="Home"
-                component={HomeScreen}
+                name="Jobs"
+                component={JobScreen}
+                options={{
+                    headerShown: false,
+                    tabBarIcon: ({ color, size }) => (
+                        <Ionicons name="briefcase" size={size} color={color} /> 
+                    )
+                }}
+
+            />
+            <Tab.Screen
+                name="Company"
+                component={CompanyScreen}
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ color, size }) => (
