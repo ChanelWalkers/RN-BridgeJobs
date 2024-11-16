@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Pressable, Switch, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, Pressable, Switch, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import Colors from '../constants/Colors';
 
 export default function AccountScreen({ navigation }) {
@@ -54,6 +54,10 @@ export default function AccountScreen({ navigation }) {
         <Pressable onPress={() => navigation.navigate('Tools')} style={styles.button}>
           <Text style={styles.buttonText}>Chuyển đến Công cụ</Text>
         </Pressable>
+
+        <TouchableOpacity style={styles.button2} onPress={()=>{navigation.navigate('UserDetail')}}>
+            <Text style={styles.buttonText}>Thông tin cá nhân</Text>
+          </TouchableOpacity>
       </ScrollView>
     </View>
   );
@@ -91,6 +95,13 @@ const styles = StyleSheet.create({
   noteText: { fontSize: 14, color: '#555', marginVertical: 5 },
   sectionDescription: { fontSize: 14, color: '#555', marginBottom: 10 },
   button: {
+    backgroundColor: Colors.button,
+    paddingVertical: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  button2: {
+    marginTop: 20,
     backgroundColor: Colors.button,
     paddingVertical: 10,
     borderRadius: 5,

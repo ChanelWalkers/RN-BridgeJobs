@@ -2,8 +2,11 @@ import Colors from "../constants/Colors";
 import ExportCVScreen from "../screens/ExportCVScreen";
 import JobDetailScreen from "../screens/JobDetailScreen";
 import LoginScreen from "../screens/LoginScreen";
+import SalaryConverter from "../screens/SalaryScreen";
 import SignUpScreen from "../screens/SignUpScreen";
 import DrawerNavigator from "./DrawerNavigator";
+import UserDetailScreen from "../screens/UserDetailScreen";
+import EditUserScreen from "../screens/EditUserScreen";
 import TabNavigator from "./TabNavigator";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -35,6 +38,10 @@ function MainNavigator() {
                     headerTitle: 'Update or Create Your CV'
                 }}
             />
+            <Stack.Screen name="Salary" component={SalaryConverter}
+            />
+            <Stack.Screen name="UserDetail" component={UserDetailScreen}/>
+            <Stack.Screen name="EditUser" component={EditUserScreen}/>
         </Stack.Navigator>
     )
 }

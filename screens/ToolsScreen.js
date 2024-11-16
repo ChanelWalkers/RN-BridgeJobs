@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import Colors from '../constants/Colors';
+import SalaryConverter from './SalaryScreen';
 
 export default function ToolsScreen({navigation}) {
   function cvHandlePress(){
@@ -36,7 +37,7 @@ export default function ToolsScreen({navigation}) {
           <Text style={styles.sectionDescription}>
             Avoid unnecessary misunderstandings and protect your own rights when signing a labor contract by understanding Gross & Net salary.
           </Text>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={()=>{navigation.navigate('Salary')}}>
             <Text style={styles.buttonText}>CALCULATE YOUR SALARY +</Text>
           </TouchableOpacity>
         </View>
