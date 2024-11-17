@@ -1,22 +1,33 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '../constants/Colors';
 import { FlatList } from 'react-native';
 import { useRoute } from '@react-navigation/native';
+import { FavoriteContext } from '../store/context/favorite-context';
 export default function JobDetailScreen() {
   const route = useRoute();
   const { jobData } = route.params;
-  
+  const jobId = jobData.id;
+
+  const favoriteJobCtx = useContext(FavoriteContext);
+  const jobIsFavorite = favoriteJobCtx.ids.includes(jobId);
+
+
+  function changeFavoriteStatusHandler(){
+    if(!jobIsFavorite){
+      return favoriteJobCtx.addFavorite(jobId);
+    }else{
+      return favoriteJobCtx.removeFavorite(jobId);
+    }
+  }
     const suggestedJobs = [
         { id: '1', title: 'Trung Tâm Đổi Mới Sáng Tạo', company: 'Tổng Công ty Bưu điện Việt Nam', location: 'Quận Nam Từ Liêm, Hà Nội', salary: '15.000 $ to 40.000 $', tags: ['Machine Learning', 'AI', 'PyTorch'], time: '5 hours ago' },
         { id: '2', title: 'Chuyên Viên Kinh Doanh', company: 'Viettel Post', location: 'Quận Cầu Giấy, Hà Nội', salary: '15.000 $ to 40.000 $', tags: ['Sales', 'Business'], time: '1 day ago' },
-        // Thêm các công việc gợi ý khác tại đây
       ];
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.content}>
-        {/* Job Image */}
         <View style={styles.jobImageContainer}>
           <Image
             source={{ uri: jobData?.Image||'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxUS1iz_zXk2ph06jC2_TK-oSFHf3HyYgoWg&s' }} // Thay bằng URL hình ảnh công ty
@@ -24,7 +35,6 @@ export default function JobDetailScreen() {
           />
         </View>
 
-        {/* Job Info */}
         <View style={styles.jobInfoContainer}>
           <Text style={styles.jobTitle}>{jobData?.name}</Text>
           <Text style={styles.companyName}>{jobData?.Title}</Text>
@@ -40,7 +50,6 @@ export default function JobDetailScreen() {
           <Text style={styles.timeAgo}>1 day ago</Text>
         </View>
 
-        {/* Job Details Section */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Thông tin</Text>
           <Text style={styles.sectionDescription}>
@@ -57,7 +66,6 @@ export default function JobDetailScreen() {
           </Text>
         </View>
 
-        {/* Job Requirements Section */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Yêu cầu công việc</Text>
           <Text style={styles.sectionDescription}>
@@ -98,10 +106,13 @@ export default function JobDetailScreen() {
         </View>
       </ScrollView>
 
-      {/* Bottom Navigation */}
       <View style={styles.bottomNav}>
-        <TouchableOpacity style={styles.saveButton}>
-          <Text style={styles.saveButtonText}>LƯU</Text>
+        <TouchableOpacity style={styles.saveButton} onPress={changeFavoriteStatusHandler}>
+          {!jobIsFavorite ? 
+            <Text style={styles.saveButtonText}>LƯU</Text>
+          :
+            <Text style={styles.saveButtonText}>BỎ LƯU</Text>
+          }
         </TouchableOpacity>
         <TouchableOpacity style={styles.applyButton}>
           <Text style={styles.applyButtonText}>ỨNG TUYỂN NGAY</Text>

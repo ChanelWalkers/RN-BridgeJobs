@@ -41,6 +41,17 @@ export default function ToolsScreen({navigation}) {
             <Text style={styles.buttonText}>CALCULATE YOUR SALARY +</Text>
           </TouchableOpacity>
         </View>
+
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Support Write Cover Letter</Text>
+          <Text style={styles.sectionDescription}>
+            If you need some helps in writing your cover letter. Don't be shy, Click here to be supported!!!
+          </Text>
+          <TouchableOpacity style={styles.button} onPress={()=>{navigation.navigate('Chat')}}>
+            <Text style={styles.buttonText}>Chat support here</Text>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
 
     </View>

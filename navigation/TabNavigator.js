@@ -9,7 +9,8 @@ import Colors from "../constants/Colors";
 import { FontAwesome5 } from "@expo/vector-icons";
 import JobScreen from "../screens/JobScreen";
 import CompanyScreen from "../screens/CompanyScreen";
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, AntDesign } from '@expo/vector-icons';
+import FavoriteScreen from "../screens/FavoriteScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -28,7 +29,7 @@ function TabNavigator() {
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ color, size }) => (
-                        <Ionicons name="briefcase" size={size} color={color} /> 
+                        <Ionicons name="briefcase" size={size} color={color} />
                     )
                 }}
 
@@ -43,6 +44,16 @@ function TabNavigator() {
                     )
                 }}
 
+            />
+            <Tab.Screen
+                name="Favorites"
+                component={FavoriteScreen}
+                options={{
+                    headerShown: false,
+                    tabBarIcon: ({color, size}) => (
+                        <AntDesign name="staro" size={size} color={color} />
+                    )
+                }}
             />
             <Tab.Screen
                 name="Profiles"

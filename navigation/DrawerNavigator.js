@@ -5,6 +5,7 @@ import ScreenPlaceholder from "../components/ScreenPlaceHolder"
 import { Image, StyleSheet } from "react-native";
 import Colors from "../constants/Colors";
 import HomeScreen from "../screens/HomeScreen";
+import FavoriteScreen from "../screens/FavoriteScreen";
 
 const Drawer = createDrawerNavigator();
 function DrawerNavigator() {
@@ -21,6 +22,8 @@ function DrawerNavigator() {
         >
             <Drawer.Screen name='Tab' component={TabNavigator}
             />
+
+
         </Drawer.Navigator>
     )
 }

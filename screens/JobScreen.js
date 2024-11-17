@@ -5,6 +5,7 @@ import AnimatedCarousel from '../components/SlideShow';
 import { Ionicons } from '@expo/vector-icons';
 
 import { db, collection, getDocs } from '../model/firebase'; // Import Firestore config
+import Colors from '../constants/Colors';
 
 const JobScreen = ({navigation}) => {
   const [JobInfor, setJobInfor] = useState([]); // State để lưu trữ dữ liệu từ Firestore
@@ -94,13 +95,12 @@ const JobScreen = ({navigation}) => {
 const styles = StyleSheet.create({
   jobContainer: {
     padding: 15,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.primary,
     margin: 10,
     borderRadius: 8,
   },
   jobTitleContainer: {
-    
-    backgroundColor: '#fff',
+    backgroundColor: Colors.primary,
     margin: 10,
     borderRadius: 8,
   },

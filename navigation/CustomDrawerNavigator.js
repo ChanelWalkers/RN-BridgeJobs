@@ -1,4 +1,4 @@
-import { Ionicons, Feather } from "@expo/vector-icons";
+import { Ionicons, Feather, AntDesign } from "@expo/vector-icons";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import { Text, StyleSheet, Pressable, View } from "react-native";
 import { useDrawerNavigation } from "@react-navigation/drawer";
@@ -31,7 +31,7 @@ function CustomDrawerNavigation({ props, navigation }) {
 
             <DrawerItem
                 label="Tools"
-                icon={() => <Feather name="tool" size={24} color="white" />}
+                icon={() => <Feather name="tool" size={20} color="white" />}
                 onPress={() => navigation.navigate('Tools')}
                 labelStyle={styles.drawerItemLabel}
             />
@@ -40,6 +40,13 @@ function CustomDrawerNavigation({ props, navigation }) {
                 icon={() => <Ionicons name="person-outline" size={20} color="white" />}
                 onPress={() => navigation.navigate('Profiles')}
                 labelStyle={styles.drawerItemLabel}
+            />
+
+            <DrawerItem 
+                label={"Favorites"}
+                icon={() => <AntDesign name="staro" size={20} color={"white"} />}
+                labelStyle={styles.drawerItemLabel}
+                onPress={() => navigation.navigate('Favorites')}
             />
         </DrawerContentScrollView>
     )

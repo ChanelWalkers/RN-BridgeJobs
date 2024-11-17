@@ -9,16 +9,17 @@ import UserDetailScreen from "../screens/UserDetailScreen";
 import EditUserScreen from "../screens/EditUserScreen";
 import TabNavigator from "./TabNavigator";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import ChatbotScreen from "../screens/ChatbotScreen";
 
 const Stack = createNativeStackNavigator();
 function MainNavigator() {
     return (
         <Stack.Navigator screenOptions={{
-            headerStyle:{
+            headerStyle: {
                 backgroundColor: Colors.button,
             },
             headerTitleAlign: "center",
-            headerTitleStyle:{
+            headerTitleStyle: {
                 color: Colors.txtField
             }
         }}>
@@ -32,16 +33,17 @@ function MainNavigator() {
             <Stack.Screen name='SignUp' component={SignUpScreen} />
             <Stack.Screen name='Login' component={LoginScreen} />
             <Stack.Screen name='JobDetail' component={JobDetailScreen}
-             />
-            <Stack.Screen name="CV" component={ExportCVScreen} 
+            />
+            <Stack.Screen name="CV" component={ExportCVScreen}
                 options={{
                     headerTitle: 'Update or Create Your CV'
                 }}
             />
             <Stack.Screen name="Salary" component={SalaryConverter}
             />
-            <Stack.Screen name="UserDetail" component={UserDetailScreen}/>
-            <Stack.Screen name="EditUser" component={EditUserScreen}/>
+            <Stack.Screen name="UserDetail" component={UserDetailScreen} />
+            <Stack.Screen name="EditUser" component={EditUserScreen} />
+            <Stack.Screen name="Chat" component={ChatbotScreen} />
         </Stack.Navigator>
     )
 }
