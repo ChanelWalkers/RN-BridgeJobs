@@ -4,7 +4,7 @@ import { View, Text, Image, FlatList, StyleSheet, TouchableOpacity, TextInput } 
 import AnimatedCarousel from '../components/SlideShow';
 import { Ionicons } from '@expo/vector-icons';
 
-import { db, collection, getDocs } from '../model/firebase'; // Import Firestore config
+import { db, collection, getDocs } from '../config/firebase'; // Import Firestore config
 import Colors from '../constants/Colors';
 
 const JobScreen = ({navigation}) => {

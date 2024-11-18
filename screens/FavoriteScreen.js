@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { View, Text, FlatList, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { FavoriteContext } from "../store/context/favorite-context";
-import { db, collection, getDocs } from '../model/firebase';
+import { db, collection, getDocs } from '../config/firebase'
 import { Ionicons } from "@expo/vector-icons";
 import Colors from "../constants/Colors";
 

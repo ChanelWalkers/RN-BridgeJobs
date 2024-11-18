@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, Image, FlatList, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 import AnimatedCarousel from '../components/SlideShow';
 
-import { db, collection, getDocs } from '../model/firebase'; // Import Firestore config
+import { db, collection, getDocs } from '../config/firebase'; // Import Firestore config
 
 const CompanyScreen = () => {
   const [businessInfo, setBusinessInfo] = useState([]); // State để lưu trữ dữ liệu từ Firestore
