@@ -5,17 +5,22 @@ import Colors from '../constants/Colors';
 import { FlatList } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import SuggestJobs from '../components/SuggestJobs';
-export default function JobDetailScreen() {
+export default function CompanyDetailScreen() {
   const route = useRoute();
   const { jobData } = route.params;
   
+  const suggestedJobs = [
+    { id: '1', title: 'Trung Tâm Đổi Mới Sáng Tạo', company: 'Tổng Công ty Bưu điện Việt Nam', location: 'Quận Nam Từ Liêm, Hà Nội', salary: '15.000 $ to 40.000 $', tags: ['Machine Learning', 'AI', 'PyTorch'], time: '5 hours ago' },
+    { id: '2', title: 'Chuyên Viên Kinh Doanh', company: 'Viettel Post', location: 'Quận Cầu Giấy, Hà Nội', salary: '15.000 $ to 40.000 $', tags: ['Sales', 'Business'], time: '1 day ago' },
+    // Thêm các công việc gợi ý khác tại đây
+  ];
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.content}>
         {/* Job Image */}
         <View style={styles.jobImageContainer}>
           <Image
-            source={{ uri: jobData?.Image||'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxUS1iz_zXk2ph06jC2_TK-oSFHf3HyYgoWg&s' }} // Thay bằng URL hình ảnh công ty
+            source={{ uri: jobData?.Logo||'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxUS1iz_zXk2ph06jC2_TK-oSFHf3HyYgoWg&s' }} // Thay bằng URL hình ảnh công ty
             style={styles.companyLogo}
           />
         </View>
@@ -23,47 +28,45 @@ export default function JobDetailScreen() {
         {/* Job Info */}
         <View style={styles.jobInfoContainer}>
           <Text style={styles.jobTitle}>{jobData?.name}</Text>
-          <Text style={styles.companyName}>{jobData?.Title}</Text>
+          <Text style={styles.companyName}>{jobData?.Slogan}</Text>
 
           <View style={styles.tagContainer}>
-            {jobData.TechStack?.map((tag, index) => (
+            {jobData.Skill?.map((tag, index) => (
               <View key={index} style={styles.tag}>
                 <Text style={styles.tagText}>{tag}</Text>
               </View>
             ))}
           </View>
 
-          <Text style={styles.timeAgo}>1 day ago</Text>
+          {/* <Text style={styles.timeAgo}>1 day ago</Text> */}
         </View>
 
         {/* Job Details Section */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Thông tin</Text>
           <Text style={styles.sectionDescription}>
-            <Ionicons name="location-sharp" size={16} color="#555" /> {jobData?.Address}
+            <Ionicons name="location-sharp" size={16} color="#555" /> {jobData?.Country}
           </Text>
           <Text style={styles.sectionDescription}>
-            <Ionicons name="briefcase" size={16} color="#555" /> {jobData?.Type}
+            <Ionicons name="briefcase" size={16} color="#555" /> {jobData?.Field}
           </Text>
+         
           <Text style={styles.sectionDescription}>
-            <Ionicons name="cash-outline" size={16} color="#555" /> Up to 2.000 USD
-          </Text>
-          <Text style={styles.sectionDescription}>
-            <Ionicons name="time-outline" size={16} color="#555" /> {jobData?.Experince}
+            <Ionicons name="time-outline" size={16} color="#555" /> {jobData?.CompanySie}
           </Text>
         </View>
 
         {/* Job Requirements Section */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Yêu cầu công việc</Text>
+          <Text style={styles.sectionTitle}>Giới thiệu</Text>
           <Text style={styles.sectionDescription}>
-              {jobData?.responsibilities.replace(/;/g, '\n')}
+              {jobData?.About.replace(/;/g, '\n')}
           </Text>
         </View>
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Phúc lợi</Text>
           <Text style={styles.sectionDescription}>
-              {jobData?.benefits.replace(/;/g, '\n')}
+              {jobData?.Benefit.replace(/;/g, '\n')}
           </Text>
         </View>
 
@@ -101,21 +104,7 @@ const styles = StyleSheet.create({
     section: { marginBottom: 15 },
     sectionTitle: { fontSize: 16, fontWeight: 'bold', marginBottom: 5 },
     sectionDescription: { fontSize: 14, color: '#555', marginBottom: 5 },
-    suggestedJobsSection: { marginTop: 20 },
-    suggestedJobCard: {
-      backgroundColor: '#f5f5f5',
-      padding: 15,
-      borderRadius: 10,
-      marginRight: 10,
-      borderWidth: 1,
-      borderColor: '#ddd',
-      width: 250,
-    },
-    suggestedJobTitle: { fontSize: 16, fontWeight: 'bold', marginBottom: 5 },
-    suggestedJobCompany: { fontSize: 14, color: '#666', marginBottom: 5 },
-    suggestedJobLocation: { fontSize: 14, color: '#555', marginBottom: 5 },
-    suggestedJobSalary: { fontSize: 14, color: '#555', marginBottom: 10 },
-    suggestedJobTime: { fontSize: 12, color: '#888' },
+   
     bottomNav: { flexDirection: 'row', paddingVertical: 10, borderTopWidth: 1, borderTopColor: '#ddd', backgroundColor: '#fff' },
     saveButton: { flex: 1, alignItems: 'center', paddingVertical: 15, backgroundColor: '#f5f5f5' },
     saveButtonText: { color: '#555', fontSize: 16 },

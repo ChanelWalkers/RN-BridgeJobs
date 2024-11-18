@@ -5,6 +5,7 @@ import AnimatedCarousel from '../components/SlideShow';
 import { Ionicons } from '@expo/vector-icons';
 
 import { db, collection, getDocs } from '../model/firebase'; // Import Firestore config
+import Search from '../components/Search';
 
 const JobScreen = ({navigation}) => {
   const [JobInfor, setJobInfor] = useState([]); // State để lưu trữ dữ liệu từ Firestore
@@ -30,6 +31,9 @@ const JobScreen = ({navigation}) => {
   function handlePress(item) {
     navigation.navigate("JobDetail", { jobData: item }); // Truyền dữ liệu sang JobDetailScreen
   }
+  function handlePressSearch() {
+    navigation.navigate("SearchScreen"); // Truyền dữ liệu sang JobDetailScreen
+  }
   
   
 
@@ -39,9 +43,8 @@ const JobScreen = ({navigation}) => {
       keyExtractor={(item) => item.id}
       ListHeaderComponent={() => (
         <>
-          <View style={styles.searchContainer}>
-            <TextInput style={styles.searchText} placeholder='Type keyword to search...' />
-          </View>
+        <Search/>
+          
           <AnimatedCarousel />
           <Text style={{ padding: 15, fontSize: 18, color: '#e74c3c' }}>HOT FOR YOU</Text>
         </>
