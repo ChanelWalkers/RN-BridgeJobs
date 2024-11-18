@@ -14,7 +14,7 @@ function DrawerNavigator() {
             screenOptions={{
                 headerTitle: () => {
                     return (
-                        <Image style={styles.imageNavigator} source={require('../assets/images/td-logo.png')} />
+                        <Image style={styles.imageNavigator} source={require('../assets/images/Bjob-logo.png')} />
                     )
                 },
                 headerTitleAlign: 'center',

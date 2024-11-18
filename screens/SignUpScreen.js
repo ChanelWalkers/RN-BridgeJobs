@@ -16,7 +16,7 @@ function SignUpScreen({navigation}) {
         <StyledContainer>
             <StatusBar barStyle={"dark-content"} />
             <InnerContainer>
-                <PageLogo resizeMode="contain" source={require('../assets/images/td-logo.png')} />
+                <PageLogo resizeMode="contain" source={require('../assets/images/Bjob-logo.png')} />
                 <SubTitle>Account SignUp</SubTitle>
                 <Formik initialValues={{ email: '', password: '' }}
                     onSubmit={(values) => {
