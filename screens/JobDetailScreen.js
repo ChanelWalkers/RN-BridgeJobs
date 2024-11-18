@@ -5,6 +5,7 @@ import Colors from '../constants/Colors';
 import { FlatList } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { FavoriteContext } from '../store/context/favorite-context';
+import SuggestJobs from '../components/SuggestJobs';
 export default function JobDetailScreen() {
   const route = useRoute();
   const { jobData } = route.params;
@@ -21,10 +22,7 @@ export default function JobDetailScreen() {
       return favoriteJobCtx.removeFavorite(jobId);
     }
   }
-    const suggestedJobs = [
-        { id: '1', title: 'Trung Tâm Đổi Mới Sáng Tạo', company: 'Tổng Công ty Bưu điện Việt Nam', location: 'Quận Nam Từ Liêm, Hà Nội', salary: '15.000 $ to 40.000 $', tags: ['Machine Learning', 'AI', 'PyTorch'], time: '5 hours ago' },
-        { id: '2', title: 'Chuyên Viên Kinh Doanh', company: 'Viettel Post', location: 'Quận Cầu Giấy, Hà Nội', salary: '15.000 $ to 40.000 $', tags: ['Sales', 'Business'], time: '1 day ago' },
-      ];
+  
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.content}>
@@ -79,31 +77,7 @@ export default function JobDetailScreen() {
           </Text>
         </View>
 
-        <View style={styles.suggestedJobsSection}>
-          <Text style={styles.sectionTitle}>Gợi ý việc làm cho bạn</Text>
-          <FlatList
-            data={suggestedJobs}
-            horizontal
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => (
-              <View style={styles.suggestedJobCard}>
-                <Text style={styles.suggestedJobTitle}>{item.title}</Text>
-                <Text style={styles.suggestedJobCompany}>{item.company}</Text>
-                <Text style={styles.suggestedJobLocation}>{item.location}</Text>
-                <Text style={styles.suggestedJobSalary}>{item.salary}</Text>
-                <View style={styles.tagContainer}>
-                  {item.tags.map((tag, index) => (
-                    <View key={index} style={styles.tag}>
-                      <Text style={styles.tagText}>{tag}</Text>
-                    </View>
-                  ))}
-                </View>
-                <Text style={styles.suggestedJobTime}>{item.time}</Text>
-              </View>
-            )}
-            showsHorizontalScrollIndicator={false}
-          />
-        </View>
+        <SuggestJobs/>
       </ScrollView>
 
       <View style={styles.bottomNav}>
@@ -157,8 +131,8 @@ const styles = StyleSheet.create({
     suggestedJobTime: { fontSize: 12, color: '#888' },
     bottomNav: { flexDirection: 'row', paddingVertical: 10, borderTopWidth: 1, borderTopColor: '#ddd', backgroundColor: '#fff' },
     saveButton: { flex: 1, alignItems: 'center', paddingVertical: 15, backgroundColor: '#f5f5f5' },
-    saveButtonText: { color: '#555', fontSize: 16 },
+    saveButtonText: { color: Colors.txt, fontSize: 16 },
     applyButton: { flex: 1, alignItems: 'center', paddingVertical: 15, backgroundColor: Colors.button },
     applyButtonText: { color: '#fff', fontSize: 16 },
   });
-  
+

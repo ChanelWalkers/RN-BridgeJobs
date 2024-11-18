@@ -4,8 +4,9 @@ import { View, Text, Image, FlatList, StyleSheet, TouchableOpacity, TextInput } 
 import AnimatedCarousel from '../components/SlideShow';
 
 import { db, collection, getDocs } from '../config/firebase'; // Import Firestore config
+import Search from '../components/Search';
 
-const CompanyScreen = () => {
+const CompanyScreen = ({navigation}) => {
   const [businessInfo, setBusinessInfo] = useState([]); // State để lưu trữ dữ liệu từ Firestore
 
   // Lấy dữ liệu từ Firestore collection "business_infor"
@@ -26,7 +27,9 @@ const CompanyScreen = () => {
   }, []);
 
   // Lấy dữ liệu từ API Job
-  
+  function handlePress(item) {
+    navigation.navigate("CompanyDetail", { jobData: item }); 
+  }
 
   return (
     <FlatList
@@ -34,16 +37,14 @@ const CompanyScreen = () => {
       keyExtractor={(item) => item.id}
       ListHeaderComponent={() => (
         <>
-          <View style={styles.searchContainer}>
-            <TextInput style={styles.searchText} placeholder='Type keyword to search...' />
-          </View>
+          <Search/>
           <AnimatedCarousel />
           <Text style={{ padding: 15, fontSize: 18, color: '#e74c3c' }}>Hot for you</Text>
         </>
       )}
       renderItem={({ item }) => (
         <View>
-          <TouchableOpacity style={styles.jobContainer}>
+          <TouchableOpacity style={styles.jobContainer} onPress={() => handlePress(item) }>
             <View style={styles.row}>
               <Image 
                 source={{ uri: item.Logo|| 'https://via.placeholder.com/50' }} 
