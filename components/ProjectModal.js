@@ -72,7 +72,7 @@ function ProjectModal({ visible, onClose, onSave, projects }) {
                                 label={"Tech Description"}
                                 placeholder={"Tech Description"}
                                 value={techDes}
-                                onChangeText={techDes}
+                                onChangeText={setTechDes}
                             />
                             <View style={styles.modalButtonContainer}>
                                 <PressableCustom onPress={onClose} title={"Cancle"} />

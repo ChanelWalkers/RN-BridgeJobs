@@ -284,6 +284,11 @@ function ExportCVScreen() {
         value={phoneNumber}
         onChangeText={setPhoneNumber}
       />
+      <TextInputForm label={"Email"}
+        placeholder={"abc@gmail.com"}
+        value={email}
+        onChangeText={setEmail}
+      />
       <TextInputForm
         label={"Address"}
         placeholder={"Street,Ward,District,City"}
