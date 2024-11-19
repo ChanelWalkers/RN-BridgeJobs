@@ -26,7 +26,7 @@ After finished clone our project you must download **Expo Go** which is a toolki
 **Note :** Expo must be version 51 if you don't have link to download just click here:
 [Expo Go for SDK 51 Android ](https://expo.dev/go?sdkVersion=51&platform=android&device=true "Expo Go for SDK 51 ")
 
-**Before run app ensure the following environment variables are set for app in .env file. You must create your local .env file ** 
+**Before run app ensure the following environment variables are set for app in .env file. You must create your local .env file**
 - `REACT_APP_KEY_API_AI`
 
 Next, you run this command to run this project:
