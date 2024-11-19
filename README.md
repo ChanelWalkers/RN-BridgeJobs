@@ -49,14 +49,14 @@ As soon as the process finish it will appear a QR on the terminal in your IDE:
 ## Color Reference
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
-| Primary | ![#FFFFFF](https://via.placeholder.com/10/ffffff?text=+) #ffffff |
-| txt | ![#2C2727](https://via.placeholder.com/10/2C2727?text=+) #2C2727 |
-| titleButton | ![#F5F3F6](https://via.placeholder.com/10/F5F3F6?text=+) #F5F3F6 |
-| background | ![#989898](https://via.placeholder.com/10/989898?text=+) #989898 |
-| button | ![#E60023](https://via.placeholder.com/10/E60023?text=+) #E60023 |
-| backgroundChat | ![#d1cccc](https://via.placeholder.com/10/d1cccc?text=+) #d1cccc |
-| hr | ![#242323](https://via.placeholder.com/10/242323?text=+) #242323 |
-| textLink | ![#6b32c5](https://via.placeholder.com/10/6b32c5?text=+) #6b32c5 |
+| Primary | ![#FFFFFF](https://placehold.co/15x15/ffffff/ffffff.png) #ffffff |
+| txt | ![#2C2727](https://placehold.co/15x15/2C2727/2C2727.png) #2C2727 |
+| titleButton | ![#F5F3F6](https://placehold.co/15x15/F5F3F6/F5F3F6.png) #F5F3F6 |
+| background | ![#989898](https://placehold.co/15x15/989898/989898.png) #989898 |
+| button | ![#E60023](https://placehold.co/15x15/E60023/E60023.png) #E60023 |
+| backgroundChat | ![#d1cccc](https://placehold.co/15x15/d1cccc/d1cccc.png) #d1cccc |
+| hr | ![#242323](https://placehold.co/15x15/242323/242323.png) #242323 |
+| textLink | ![#6b32c5](https://placehold.co/15x15/6b32c5/6b32c5.png) #6b32c5 |
 
 <h3 align="left">Languages and Tools:</h3>
 <p align="left"> <a href="https://firebase.google.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" alt="firebase" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> <img  href="https://reactnative.dev/" target="_blank" rel="noreferrer"> <img src="https://reactnative.dev/img/header_logo.svg" alt="reactnative" width="40" height="40"/> <a href="https://expo.dev/go" target="_blank" rel="noreferrer"> <img src="https://i.ibb.co/VDnVRSb/client.png" alt="firebase" width="40" height="40"/> </a> </p>
