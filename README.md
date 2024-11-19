@@ -14,7 +14,7 @@ With a user-friendly interface, **Bridge Jobs** ensures job seekers can easily e
 ## Installation
 First clone my project with this command :
 ```bash
-	 git clone https://github.com/ChanelWalkers/RN-BridgeJobs
+	 git clone https://github.com/ChanelWalkers/RN-BridgeJobs.git
 ```
 Secondly, you have to install all packages and dependencies in project:
 ```bash
