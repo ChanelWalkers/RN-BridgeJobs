@@ -76,6 +76,63 @@ As soon as the process finish it will appear a QR on the terminal in your IDE:
 - Firebase
 - Stripe API
 
+
+## Usage
+1.  Login Screen for user have existing account
+
+![Login Screen](https://i.ibb.co/dJmQdJx/Login.jpg)
+
+2.  SignUp Screen
+
+![SignUp Screen](https://i.ibb.co/ft6DjNF/SignUp.jpg)
+
+3.  Home Screen
+
+![Home Screen](https://i.ibb.co/tpWFfjq/Home-Screen.jpg)
+
+4.  Detail Job appears when user click any job display on Home Screen
+
+![Detail Job](https://i.ibb.co/cQcbH50/Detail-2.jpg)
+
+5.  Like Job Detail Screen when you tap with Company on Bottom Tab Navgator, it will navigate Company Screen and if you press any jobs on this Screen. It appears Company Detail
+
+![Company](https://i.ibb.co/G7rxqj1/Detail-Company.png)
+
+6.  On Job Screen has Search bar when you typing on this you can find job by location, tech stack, skill, country, location, industry ...
+
+![Search Job](https://i.ibb.co/h1scbRN/Search-Job.png)
+
+7.  Edit Profile in Tools
+
+![Edit Profile](https://i.ibb.co/GVg4Srd/Edit-Profile.png)
+
+8.  Additionally, we have Salary converter with guide help you understand how to convert Gross to Net Salary
+
+![SalaryConverter](https://i.ibb.co/BswN88C/Salary-Converter.png)
+
+9.  Then, the last button Chat bot in Tools Screen. It's a chat bot integrated with A.I help you with CV Consulting or anything relevant to job portal or job which you want to apply
+
+![Chatbot](https://i.ibb.co/ZGCKCkB/Chatbot.png)
+
+10.  We can help you generate CV through form with TextInput and TextArea in Tools Screen using expo file system, expo print and expo sharing. You can download or sharing after generated your CV in file PDF.
+
+![GenerateCV](https://i.ibb.co/85nQ0zd/Generate-CV.png)
+
+You can modify Project information up to you
+
+![Project](https://i.ibb.co/G7CrrpX/Project.png)
+
+After Generated CV Successfully, it will save in any position in your file system in your device, or you can sharing any social. 
+
+![ViewLocationFile](https://i.ibb.co/S0Fk3vk/image.png)
+
+To view CV just tap in file PDF which saved in your position you saved .
+
+![ViewCV](https://i.ibb.co/pZr8GjF/image.png)
+
+##Demo
+[Link Demo](https://drive.google.com/drive/folders/1ceSsR-WvxLYIhU3GJhOFaTaBmtHg7Kpq "Link Demo")
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
