@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import Colors from '../constants/Colors';
-
+import { useUser } from '../store/context/user-context';
 export default function UserDetailScreen({ route, navigation }) {
   // Nhận thông tin người dùng từ route.params
-  const userInfo = {
-    fullName: 'Nguyễn Văn A',
-    email: 'nguyenvana@example.com',
-    phoneNumber: '0123456789',
-  };
+  
+  const { user } = useUser();
   
 
 
-  const [userDetails, setUserDetails] = useState(userInfo);
+ 
 
 
   function handleUpdate(updatedUserInfo) {
@@ -24,13 +21,13 @@ export default function UserDetailScreen({ route, navigation }) {
       <Text style={styles.title}>Thông tin người dùng</Text>
       <View style={styles.infoContainer}>
         <Text style={styles.infoText}>
-          <Text style={styles.boldText}>Họ và tên:</Text> {userDetails.fullName}
+          <Text style={styles.boldText}>Họ và tên:</Text> {user.name}
         </Text>
         <Text style={styles.infoText}>
-          <Text style={styles.boldText}>Email:</Text> {userDetails.email}
+          <Text style={styles.boldText}>Email:</Text> {user.email}
         </Text>
         <Text style={styles.infoText}>
-          <Text style={styles.boldText}>Số điện thoại:</Text> {userDetails.phoneNumber}
+          <Text style={styles.boldText}>Số điện thoại:</Text> {user.phone}
         </Text>
       </View>
 
@@ -38,7 +35,7 @@ export default function UserDetailScreen({ route, navigation }) {
         style={styles.editButton}
         onPress={() =>
           navigation.navigate('EditUser', {
-            userInfo: userDetails, 
+            userInfo: user, 
             onSave: handleUpdate, 
           })
         }

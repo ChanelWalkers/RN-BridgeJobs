@@ -136,3 +136,4 @@ const styles = StyleSheet.create({
     applyButtonText: { color: '#fff', fontSize: 16 },
   });
 
+  

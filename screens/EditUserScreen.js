@@ -1,21 +1,45 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Pressable, StyleSheet, Alert } from 'react-native';
 import Colors from '../constants/Colors';
-
+import { useUser } from '../store/context/user-context';
+import { auth, db } from '../config/firebase'; // Đảm bảo đường dẫn đúng
+import { doc, updateDoc } from 'firebase/firestore';
 export default function EditUserScreen({ route, navigation }) {
   // Nhận dữ liệu từ route.params
   const { userInfo, onSave } = route.params;
-
-
-  const [fullName, setFullName] = useState(userInfo.fullName);
+  const {user, login} = useUser()
+  const [isSaving, setIsSaving] = useState(false);
+  const [fullName, setFullName] = useState(userInfo.name);
   const [email, setEmail] = useState(userInfo.email);
-  const [phoneNumber, setPhoneNumber] = useState(userInfo.phoneNumber);
+  const [phone, setPhone] = useState(userInfo.phone);
 
 
-  function handleSave() {
-    const updatedUserInfo = { fullName, email, phoneNumber };
-    onSave(updatedUserInfo); 
-    navigation.goBack(); 
+  async function handleSave() {
+    const updatedUserInfo = { name: fullName, email: email, phone: phone };
+    setIsSaving(true);
+    login(updatedUserInfo)
+    try {
+      const user = auth.currentUser;
+
+      if (!user) {
+        throw new Error('Người dùng chưa đăng nhập.');
+      }
+
+      // Tham chiếu đến tài liệu người dùng trong Firestore
+      const userDocRef = doc(db, 'users', user.uid);
+
+      // Cập nhật dữ liệu người dùng trong Firestore
+      await updateDoc(userDocRef, updatedUserInfo);
+
+      Alert.alert('Thành công', 'Thông tin đã được cập nhật thành công.', [
+        { text: 'OK', onPress: () => navigation.goBack() },
+      ]);
+    } catch (error) {
+      console.error('Error updating user info:', error);
+      Alert.alert('Lỗi', error.message);
+    } finally {
+      setIsSaving(false);
+    }
   }
 
   return (
@@ -37,13 +61,14 @@ export default function EditUserScreen({ route, navigation }) {
         onChangeText={setEmail}
         placeholder="Nhập email"
         keyboardType="email-address"
+        editable={false}
       />
 
       <Text style={styles.label}>Số điện thoại:</Text>
       <TextInput
         style={styles.input}
-        value={phoneNumber}
-        onChangeText={setPhoneNumber}
+        value={phone}
+        onChangeText={setPhone}
         placeholder="Nhập số điện thoại"
         keyboardType="phone-pad"
       />

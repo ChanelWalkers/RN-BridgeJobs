@@ -3,8 +3,9 @@ import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import { Text, StyleSheet, Pressable, View } from "react-native";
 import { useDrawerNavigation } from "@react-navigation/drawer";
 import Colors from "../constants/Colors";
-
+import { useUser } from '../store/context/user-context';
 function CustomDrawerNavigation({ props, navigation }) {
+    const {user} = useUser();
     return (
         <DrawerContentScrollView {...props} style={styles.drawerContainer}>
             <View style={styles.topDrawer}>
@@ -16,16 +17,16 @@ function CustomDrawerNavigation({ props, navigation }) {
                 </View>
             </View>
 
-            <Pressable style={styles.loginButton}
+            {!user ?<Pressable style={styles.loginButton}
             onPress={()=>navigation.navigate('Login')}>
                 <Text style={styles.loginText}>LOGIN</Text>
-            </Pressable>
-
             <Text style={styles.sectionTitle}>Menu</Text>
+            </Pressable>  : null}
+
             <DrawerItem
                 label="Home page"
                 icon={() => <Ionicons name="star-outline" size={20} color="white" />}
-                onPress={() => navigation.navigate('Home')}
+                onPress={() => navigation.navigate('Jobs')}
                 labelStyle={styles.drawerItemLabel}
             />
 

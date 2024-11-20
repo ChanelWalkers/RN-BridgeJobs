@@ -12,6 +12,7 @@ const ResultSearch = ({ route }) => {
   useEffect(() => {
     axios.post('https://api.apijobs.dev/v1/job/search', {
       'q': keyword,
+      
     }, {
       headers: {
         apikey: '9996e9bfa6275575b0a037ef69dee0344706581a42d8ca243fb4f425aadc58ca',
@@ -96,7 +97,7 @@ const ResultSearch = ({ route }) => {
       keyExtractor={(item) => item.id}
       ListHeaderComponent={() => (
         <>
-          <Text style={styles.headerText}>{jobs.length} JOBS FOR YOU</Text>
+          <Text style={styles.headerText}>{jobs.length ==0 ? "SEARCHING..." : jobs.length} JOBS FOR YOU</Text>
         </>
       )}
       renderItem={({ item }) => (
@@ -105,7 +106,7 @@ const ResultSearch = ({ route }) => {
             <View style={styles.row}>
               {/* Hình ảnh công ty */}
               <Image
-                source={{ uri: 'https://via.placeholder.com/50' }}
+                source={require('../assets/images/Bjob-logo.png')}
                 style={styles.companyImage}
               />
               <View style={styles.textContainer}>

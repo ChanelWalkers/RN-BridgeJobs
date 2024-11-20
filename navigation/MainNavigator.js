@@ -9,12 +9,13 @@ import SignUpScreen from "../screens/SignUpScreen";
 import DrawerNavigator from "./DrawerNavigator";
 import UserDetailScreen from "../screens/UserDetailScreen";
 import EditUserScreen from "../screens/EditUserScreen";
-import TabNavigator from "./TabNavigator";
+
 import { Ionicons } from "@expo/vector-icons";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import ChatbotScreen from "../screens/ChatbotScreen";
 import { Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+
 
 
 const Stack = createNativeStackNavigator();
@@ -44,6 +45,7 @@ function MainNavigator() {
                 }}
             />
             <Stack.Screen name='SignUp' component={SignUpScreen} />
+            <Stack.Screen name='Home' component={DrawerNavigator} />
             <Stack.Screen name='Login' component={LoginScreen} />
             <Stack.Screen name='JobDetail' component={JobDetailScreen}/>
             <Stack.Screen name='CompanyDetail' component={CompanyDetailScreen}/>
