@@ -20,7 +20,6 @@ function CustomDrawerNavigation({ props, navigation }) {
             {!user ?<Pressable style={styles.loginButton}
             onPress={()=>navigation.navigate('Login')}>
                 <Text style={styles.loginText}>LOGIN</Text>
-            <Text style={styles.sectionTitle}>Menu</Text>
             </Pressable>  : null}
 
             <DrawerItem

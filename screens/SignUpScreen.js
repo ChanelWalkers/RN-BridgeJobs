@@ -154,7 +154,7 @@ function SignUpScreen({ navigation }) {
                       pressed ? styles.buttonPressed : null,
                     ]}
                   >
-                    <TextLinkContent>Login</TextLinkContent>
+                    <TextLinkContent>Sign Up</TextLinkContent>
                   </TextLink>
                 </ExtraView>
               </StyledFormArea>

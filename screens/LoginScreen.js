@@ -54,6 +54,7 @@ function LoginScreen({ navigation }) {
   }
 
   const handleLogin = async (values) => {
+    setMessage('');
     const { email, password } = values;
 
     try {

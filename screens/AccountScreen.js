@@ -51,28 +51,26 @@ export default function AccountScreen({ navigation }) {
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Chào mừng</Text>
-          
-          
+          <Text style={styles.sectionTitle}>Welcome</Text>
+  
           {!user ? (
             <View style={styles.navigationContainer}>
               <Pressable onPress={moveToSignUp}>
-                <Text style={styles.loginText}>ĐĂNG KÝ/</Text>
+                <Text style={styles.loginText}>SIGN UP/</Text>
               </Pressable>
               <Pressable onPress={moveToLogin}>
-                <Text style={styles.loginText}>ĐĂNG NHẬP</Text>
+                <Text style={styles.loginText}>LOGIN</Text>
               </Pressable>
             </View>
           ) : (
             <View style={styles.userInfoContainer}>
               <Text style={styles.userInfoText}>{user.name}</Text>
-             
-              {/* Bạn có thể thêm các thông tin khác nếu cần */}
+              {/* Add additional user information if needed */}
             </View>
           )}
-
+  
           <View style={styles.switchContainer}>
-            <Text style={styles.switchLabel}>Tìm kiếm công việc</Text>
+            <Text style={styles.switchLabel}>Job Search</Text>
             <Switch
               value={isJobSearchEnabled}
               onValueChange={setJobSearchEnabled}
@@ -81,7 +79,7 @@ export default function AccountScreen({ navigation }) {
             />
           </View>
           <View style={styles.switchContainer}>
-            <Text style={styles.switchLabel}>Ứng tuyển tự động</Text>
+            <Text style={styles.switchLabel}>Auto Apply</Text>
             <Switch
               value={isAutoApplyEnabled}
               onValueChange={setAutoApplyEnabled}
@@ -90,27 +88,28 @@ export default function AccountScreen({ navigation }) {
             />
           </View>
           <Text style={styles.noteText}>
-            Kích hoạt trong vòng 30 ngày. Sẽ tự động giới thiệu bạn với Nhà Tuyển Dụng phù hợp trong 30 ngày.
+            Activate for 30 days. You will be automatically introduced to suitable employers for 30 days.
           </Text>
         </View>
-
+  
         <Pressable onPress={() => navigation.navigate('Tools')} style={styles.button}>
-          <Text style={styles.buttonText}>Chuyển đến Công cụ</Text>
+          <Text style={styles.buttonText}>Go to Tools</Text>
         </Pressable>
-
+  
         {user && (
           <>
             <TouchableOpacity style={styles.button2} onPress={() => navigation.navigate('UserDetail')}>
-              <Text style={styles.buttonText}>Thông tin cá nhân</Text>
+              <Text style={styles.buttonText}>Personal Information</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button2} onPress={handleLogout}>
-              <Text style={styles.buttonText}>Đăng xuất</Text>
+              <Text style={styles.buttonText}>Logout</Text>
             </TouchableOpacity>
           </>
         )}
       </ScrollView>
     </View>
   );
+  
 }
 
 const styles = StyleSheet.create({
@@ -146,6 +145,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: 'center',
     marginTop: 10,
+    marginBottom: 10,
   },
   buttonText: { color: '#fff', fontSize: 16, fontWeight: 'bold' },
   navigationContainer: {
