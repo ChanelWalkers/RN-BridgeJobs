@@ -71,14 +71,7 @@ export default function CompanyDetailScreen() {
       </ScrollView>
 
       {/* Bottom Navigation */}
-      <View style={styles.bottomNav}>
-        <TouchableOpacity style={styles.saveButton}>
-          <Text style={styles.saveButtonText}>LƯU</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.applyButton}>
-          <Text style={styles.applyButtonText}>ỨNG TUYỂN NGAY</Text>
-        </TouchableOpacity>
-      </View>
+      
     </View>
   );
 }
