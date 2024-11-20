@@ -54,7 +54,7 @@ export default function JobDetailScreen() {
             <Ionicons name="location-sharp" size={16} color="#555" /> {jobData?.Address}
           </Text>
           <Text style={styles.sectionDescription}>
-            <Ionicons name="briefcase" size={16} color="#555" /> {jobData?.Type}
+            <Ionicons name="briefcase" size={16} color="#555" /> {jobData ? jobData?.Type : ''}
           </Text>
           <Text style={styles.sectionDescription}>
             <Ionicons name="cash-outline" size={16} color="#555" /> Up to 2.000 USD
@@ -67,13 +67,13 @@ export default function JobDetailScreen() {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Yêu cầu công việc</Text>
           <Text style={styles.sectionDescription}>
-              {jobData?.responsibilities.replace(/;/g, '\n')}
+              {jobData ? jobData?.responsibilities.replace(/;/g, '\n') : ''}
           </Text>
         </View>
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Phúc lợi</Text>
           <Text style={styles.sectionDescription}>
-              {jobData?.benefits.replace(/;/g, '\n')}
+              {jobData ? jobData?.benefits.replace(/;/g, '\n') : ''}
           </Text>
         </View>
 

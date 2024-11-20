@@ -12,10 +12,18 @@ export default function SalaryConverter() {
     return value.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }).replace('₫', 'VND');
   };
 
+  const formatInput = (value) => {
+    const formattedValue = value.replace(/[^\d]/g, '');
+    const formattedNumber = Number(formattedValue).toLocaleString();
+    return formattedNumber;
+  };
+
   const calculatePersonalIncomeTax = (taxableIncome) => {
     if (taxableIncome <= 0) {
       return 0; // Không có thu nhập chịu thuế
     }
+
+
 
     const taxBrackets = [
       { limit: 5000000, rate: 0.05 },
@@ -42,7 +50,8 @@ export default function SalaryConverter() {
 
 
   const calculateNetIncome = () => {
-    const gross = parseFloat(grossIncome);
+    const gross = parseFloat(grossIncome.replace(/[^0-9.]+/g,""));
+    console.log(gross);
     if (isNaN(gross) || gross <= 0) {
       alert('Vui lòng nhập thu nhập gộp hợp lệ!');
       return;
@@ -85,7 +94,7 @@ export default function SalaryConverter() {
         placeholder="Nhập thu nhập gộp (VND)"
         keyboardType="numeric"
         value={grossIncome}
-        onChangeText={setGrossIncome}
+        onChangeText={(text) => setGrossIncome(formatInput(text))}
       />
       <Text style={styles.label}>Số người phụ thuộc:</Text>
       <TextInput
