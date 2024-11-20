@@ -194,7 +194,7 @@ function ExportCVScreen() {
             ${project.position ? `
             <strong>Your position in project: ${project.position}</strong> <br> ` : ''
         }
-              <strong>Your responsibility in project: ${project.responsibillity}
+              <strong>Your responsibility in project: ${project.responsibility}
               </strong> <br>
               <strong>Technology description: ${project.techDescription}</strong>
             </td>
