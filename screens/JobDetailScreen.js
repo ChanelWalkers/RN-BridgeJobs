@@ -67,13 +67,13 @@ export default function JobDetailScreen() {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Yêu cầu công việc</Text>
           <Text style={styles.sectionDescription}>
-              {jobData ? jobData?.responsibilities.replace(/;/g, '\n') : ''}
+            {jobData && jobData.responsibilities ? jobData.responsibilities.replace(/;/g, '\n') : ''}
           </Text>
         </View>
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Phúc lợi</Text>
           <Text style={styles.sectionDescription}>
-              {jobData ? jobData?.benefits.replace(/;/g, '\n') : ''}
+            {jobData && jobData.benefits ? jobData.benefits.replace(/;/g, '\n') : ''}
           </Text>
         </View>
 
